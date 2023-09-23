@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>401 Unauthorized</title>
+    <link rel="icon" href="https://cdn.discordapp.com/attachments/1152538414017687684/1154710899525947422/gift.jpg" type="image/jpg">
+    <!--Style-->
+    <link rel="stylesheet" href="/css/accessdecline.css">
+</head>
+<body>
+<div id="container">
+    <div class="content">
+        <h1>401</h1>
+        <h4>Oops! Wrong Username Or Password</h4>
+        <p>Please verify your username and password and attempt to log in again</p>
+        <a href="/">Back To Home</a>
+    </div>
+</div>
+<!-- Mouse move script -->
+<script type="text/javascript">
+    const container = document.getElementById('container');
+    window.onmousemove = function (e) {
+        var x = -e.x / 5,
+            y = -e.y / 5;
+        container.style.backgroundPositionX = x + 'px';
+        container.style.backgroundPositionY = y + 'px';
+    }
+    /* Mobile gyroscope */
+    window.addEventListener("deviceorientation", function (e) {
+        container.style.backgroundPositionX = e.gamma / 3 + "px"
+        container.style.backgroundPositionY = e.beta / 3 + "px"
+    })
+</script>
+</body>
+</html>

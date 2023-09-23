@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background: linear-gradient(45deg, #8500ff, #5acaff);
+    height: 100vh;
+}
+
+#container {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../img/pattern.png"), #151729;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .5);
+    transition: 200ms linear;
+}
+
+#container .content {
+    max-width: 600px;
+    text-align: center;
+}
+
+#container .content h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18vw;
+    color: #fff;
+    line-height: 1em;
+}
+
+#container .content h4 {
+    position: relative;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #111;
+    background: #fff;
+    font-weight: 300;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+#container .content p {
+    color: #fff;
+    font-size: 1.2em;
+}
+
+#container .content a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 25px;
+    background: #ff0562;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 25px;
+    border-radius: 25px;
+    border-bottom: 4px solid #d00d56;
+}
+
+@media (max-width: 768px) {
+    #container {
+        top: 5%;
+        left: 5%;
+        right: 5%;
+        bottom: 5%;
+    }
+
+    #container .content h1 {
+        font-size: 10em;
+    }
+}
+
+@media (max-height: 420px),(max-width: 280px) {
+    #container {
+        top: 3%;
+        left: 3%;
+        right: 3%;
+        bottom: 3%;
+    }
+
+    #container .content h1 {
+        font-size: 8em;
+    }
+
+    #container .content h4 {
+        font-size: 1.3em;
+    }
+
+    #container .content p {
+        font-size: 1.1em;
+    }
+
+    #container .content a {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-height: 320px) {
+    #container .content h1 {
+        font-size: 7em;
+    }
+
+    #container .content h4 {
+        display: none;
+    }
+
+    #container .content p {
+
+    }
+
+    #container .content a {
+        font-size: 0.7em;
+    }
+}
+
+@media (min-width: 1440px) {
+    #container .content {
+        max-width: 80%;
+    }
+    #container .content h1 {
+        font-size: 15vw;
+    }
+
+    #container .content h4 {
+        font-size: 3vw;
+    }
+
+    #container .content p {
+        font-size: 2vw;
+    }
+
+    #container .content a {
+        font-size: 1.5vw;
+    }
+}

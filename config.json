@@ -1,0 +1,24 @@
+{
+  "clientId": "1149323580690145290",
+  "guildId": "1139591103759274055",
+  "token": "MTE0OTMyMzU4MDY5MDE0NTI5MA.G0oWmZ.CSguoDAfT2nEWL_oVoY7p0T4HlahPJs4zjArkE",
+  "genChannel": "1152538364944322660",
+  "premiumChannel": "1152538414017687684",
+  "username": "0",
+  "password": "0",
+  "genCooldown": "5",
+  "premiumCooldown": "3",
+  "website": "https://youtube.com/ScienceGearYT",
+  "banner": "https://media.discordapp.net/attachments/960440723369517106/996423763522506782/rainbow-border.gif",
+  "footer": "Made By ScienceGear 🔥",
+  "color": {
+    "green": "0x57F287",
+    "yellow": "0xFEE75C",
+    "red": "0xED4245",
+    "default": "0x5865F2"
+  },
+  "command": {
+    "notfound_message": true,
+    "error_message": true
+  }
+}
