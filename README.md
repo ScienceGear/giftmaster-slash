@@ -1,7 +1,5 @@
-# GiftMaster Discord Bot with Dashboard (Supports Slash Commands)
-
 <p align="center">
-  <img src="https://www.freepnglogos.com/uploads/gift-png/file-gift-flat-icon-vector-svg-wikimedia-commons-10.png" alt="GiftMaster Logo" width="100"/>
+  <img src="https://cdn.discordapp.com/attachments/1134114615962390581/1155449484071927858/GIFTMASTER-9-24-2023.png" alt="GiftMaster Logo" width="100"/>
 </p>
 <h1 align="center">GiftMaster Discord Bot with Dashboard (Supports Slash Commands)</h1>
 
