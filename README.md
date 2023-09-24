@@ -28,6 +28,12 @@ Welcome to GiftMaster, the advanced Discord bot that rewards you for using comma
 - Node.js
 - Express
 
+## Let's Make It <3
+
+<a href="https://replit.com/github/https://github.com/ScienceGear/giftmaster-slash">
+  <img src="https://replit.com/badge/github/ScienceGear/giftmaster-slash" alt="Run on Replit" />
+</a>
+
 ## Installation and Configuration
 
 Adding GiftMaster to your Discord server is a straightforward process:
