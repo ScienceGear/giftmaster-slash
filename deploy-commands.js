@@ -8,12 +8,17 @@ const commandFiles = fs
   .readdirSync("./commands")
   .filter((file) => file.endsWith(".js"));
 
+console.log("Loading commands...");
+
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
   commands.push(command.data.toJSON());
+
+  // Print a fancy message for each loaded command
+  console.log(`✅ Loaded command: ${command.data.name}`);
 }
 
-const rest = new REST({ version: "9" }).setToken(token);
+const rest = new REST({ version: "9" }).setToken(process.env.token || token);
 
 (async () => {
   try {
@@ -21,7 +26,7 @@ const rest = new REST({ version: "9" }).setToken(token);
       body: commands,
     });
 
-    console.log("Successfully registered application commands.");
+    console.log("\n✅ Successfully registered application commands.");
   } catch (error) {
     console.error(error);
   }

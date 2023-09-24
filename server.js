@@ -5,20 +5,20 @@ const cookieParser = require('cookie-parser'); // Add cookie-parser middleware
 const fs = require('fs');
 const app = express();
 const session = require('express-session');
-const port = 3000;
 app.use(express.static('dashboard'));
 require('dotenv').config();
 
 
-
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(express.json());
 app.use(cookieParser()); // Use cookie-parser middleware
 
 // Middleware to check if the user is logged in using cookies
 function requireLogin(req, res, next) {
   if (req.cookies.user) {
-  
+
     next(); // User is logged in, continue to the next middleware or route handler
   } else {
     // User is not logged in, send the accessdecline.html file
@@ -38,7 +38,9 @@ app.post('/login', (req, res) => {
     (password === process.env.password || password === config.password)
   ) {
     // Set a cookie to remember the user's login status
-    res.cookie('user', username, { maxAge: 7 * 24 * 60 * 60 * 1000 }); // Cookie will expire in 7 days
+    res.cookie('user', username, {
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    }); // Cookie will expire in 7 days
     res.redirect('/edit');
   } else {
     res.sendFile(path.join(__dirname, 'dashboard', 'invalidlogin.html'));
@@ -116,6 +118,7 @@ app.get('/edit', requireLogin, (req, res) => {
           <html>
           <head>
           <title>Giftmaster Dashboard</title>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
           <link rel="icon" href="https://cdn.discordapp.com/attachments/1152538414017687684/1154710899525947422/gift.jpg" type="image/jpg">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ionicons@6.0.1/dist/css/ionicons.min.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -615,6 +618,77 @@ h2 {
   </div>
 </div>
 
+<style>
+/* Add the heart icon and tooltip styles */
+.floating-heart {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff5555;
+  color: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.floating-heart i {
+  font-size: 24px;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  bottom: 50px;
+  right: 50px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.inline-text {
+  display: inline-block; /* Make the text inline */
+  margin-left: 5px; /* Add some spacing between "Made by" and "Science Gear" */
+}
+
+.floating-heart:hover {
+  background-color: #ff3333;
+}
+
+.floating-heart:hover .tooltip {
+  opacity: 1;
+}
+</style>
+
+<div class="floating-heart">
+		<i class="fas fa-heart"></i>
+		<div class="tooltip">Made with ❤️ By Science Gear</div>
+	  </div>
+
+<script>
+// JavaScript for toggling the tooltip
+const floatingHeart = document.querySelector('.floating-heart');
+
+floatingHeart.addEventListener('click', () => {
+  const tooltip = floatingHeart.querySelector('.tooltip');
+  tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
+});
+
+// Hide the tooltip initially
+document.addEventListener('DOMContentLoaded', () => {
+  const tooltip = floatingHeart.querySelector('.tooltip');
+  tooltip.style.display = 'none';
+});
+
+</script>
+
 
 
             <script>
@@ -827,6 +901,7 @@ app.get('/help', requireLogin, (req, res) => {
   const helpContent = `<html>
   <head>
   <title>Giftmaster Dashboard -help</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="icon" href="https://cdn.discordapp.com/attachments/1152538414017687684/1154710899525947422/gift.jpg" type="image/jpg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ionicons@6.0.1/dist/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -1369,6 +1444,79 @@ background-color: #0056b3;
     </ul>
   </div>
 
+  <style>
+  /* Add the heart icon and tooltip styles */
+  .floating-heart {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff5555;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .floating-heart i {
+    font-size: 24px;
+  }
+  
+  .tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    bottom: 50px;
+    right: 50px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .inline-text {
+    display: inline-block; /* Make the text inline */
+    margin-left: 5px; /* Add some spacing between "Made by" and "Science Gear" */
+  }
+  
+  .floating-heart:hover {
+    background-color: #ff3333;
+  }
+  
+  .floating-heart:hover .tooltip {
+    opacity: 1;
+  }
+  </style>
+  
+  <div class="floating-heart">
+      <i class="fas fa-heart"></i>
+      <div class="tooltip">Made with ❤️ By Science Gear</div>
+      </div>
+  
+  <script>
+  // JavaScript for toggling the tooltip
+  const floatingHeart = document.querySelector('.floating-heart');
+  
+  floatingHeart.addEventListener('click', () => {
+    const tooltip = floatingHeart.querySelector('.tooltip');
+    tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
+  });
+  
+  // Hide the tooltip initially
+  document.addEventListener('DOMContentLoaded', () => {
+    const tooltip = floatingHeart.querySelector('.tooltip');
+    tooltip.style.display = 'none';
+  });
+  
+  </script>
+  
+  
+
     <script>
     // add hovered class to selected list item
 let list = document.querySelectorAll(".navigation li");
@@ -1411,6 +1559,7 @@ app.get('/settings', requireLogin, (req, res) => {
   const settingsContent = `<html>
   <head>
   <title>Giftmaster Dashboard -settings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="icon" href="https://cdn.discordapp.com/attachments/1152538414017687684/1154710899525947422/gift.jpg" type="image/jpg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ionicons@6.0.1/dist/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -1472,6 +1621,19 @@ app.get('/settings', requireLogin, (req, res) => {
         input[type="submit"]:hover {
             background-color: #1e177d;
         }
+
+        .card {
+          margin-bottom: 20px; /* Add margin to the bottom of the card element */
+      }
+      
+      .settings-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 20px; /* Add margin to the top of the settings-container */
+          margin-bottom: 20px; /* Add margin to the bottom of the settings-container */
+      }
+      
 
         /* Add media queries for responsiveness */
         @media screen and (max-width: 600px) {
@@ -1959,6 +2121,9 @@ background-color: #0056b3;
 
     <div class="settings-container">
     <form id="settings-form">
+        <label for="status">Status:</label>
+        <input type="text" id="status" name="status" value="${config.status}"><br><br>
+
         <label for="genCooldown">General Cooldown: (seconds)</label>
         <input type="text" id="genCooldown" name="genCooldown" value="${config.genCooldown}"><br><br>
 
@@ -1979,6 +2144,79 @@ background-color: #0056b3;
 </div>
   </div>
 </div>
+
+
+<style>
+/* Add the heart icon and tooltip styles */
+.floating-heart {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff5555;
+  color: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.floating-heart i {
+  font-size: 24px;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  bottom: 50px;
+  right: 50px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.inline-text {
+  display: inline-block; /* Make the text inline */
+  margin-left: 5px; /* Add some spacing between "Made by" and "Science Gear" */
+}
+
+.floating-heart:hover {
+  background-color: #ff3333;
+}
+
+.floating-heart:hover .tooltip {
+  opacity: 1;
+}
+</style>
+
+<div class="floating-heart">
+		<i class="fas fa-heart"></i>
+		<div class="tooltip">Made with ❤️ By Science Gear</div>
+	  </div>
+
+<script>
+// JavaScript for toggling the tooltip
+const floatingHeart = document.querySelector('.floating-heart');
+
+floatingHeart.addEventListener('click', () => {
+  const tooltip = floatingHeart.querySelector('.tooltip');
+  tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
+});
+
+// Hide the tooltip initially
+document.addEventListener('DOMContentLoaded', () => {
+  const tooltip = floatingHeart.querySelector('.tooltip');
+  tooltip.style.display = 'none';
+});
+
+</script>
+
 
     <script>
 
@@ -2057,7 +2295,9 @@ app.post("/save-settings", requireLogin, (req, res) => {
   fs.readFile('./config.json', 'utf8', (err, data) => {
     if (err) {
       console.error("Error reading config file:", err);
-      res.status(500).json({ error: "Failed to read config file" });
+      res.status(500).json({
+        error: "Failed to read config file"
+      });
       return;
     }
 
@@ -2070,28 +2310,40 @@ app.post("/save-settings", requireLogin, (req, res) => {
     fs.writeFile('./config.json', JSON.stringify(config, null, 2), (err) => {
       if (err) {
         console.error("Error writing config file:", err);
-        res.status(500).json({ error: "Failed to save settings" });
+        res.status(500).json({
+          error: "Failed to save settings"
+        });
         return;
       }
 
-      res.json({ message: "Settings saved successfully" });
+      res.json({
+        message: "Settings saved successfully"
+      });
     });
   });
 });
 
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 
 
 // Handle the creation of a new file
 app.post('/create', requireLogin, (req, res) => {
   const folder = req.body.folder;
-  const fileName = req.body.fileName;
+  let fileName = req.body.fileName;
 
   // Check if the folder is valid
   if (folder === 'free' || folder === 'premium') {
+    // Check if the file name has .txt extension, if not, add it
+    let fullFileName = fileName; // Create a new variable to store the full file name
+    if (!fullFileName.endsWith('.txt')) {
+      fullFileName += '.txt';
+    }
+
     // Create the file in the selected folder
-    fs.writeFile(`${folder}/${fileName}`, '', err => {
+    fs.writeFile(`${folder}/${fullFileName}`, '', (err) => {
       if (err) {
         res.send(`Error creating file: ${err}`);
       } else {
@@ -2104,15 +2356,19 @@ app.post('/create', requireLogin, (req, res) => {
 });
 
 
-
 // Handle the file rename request
 app.post('/rename', requireLogin, (req, res) => {
   const folder = req.body.folder;
   const oldFileName = req.body.oldFileName;
-  const newFileName = req.body.newFileName;
+  let newFileName = req.body.newFileName;
+
+  // Check if the new file name has .txt extension, if it does, remove it
+  if (newFileName.endsWith('.txt')) {
+    newFileName = newFileName.slice(0, -4); // Remove the last 4 characters (.txt)
+  }
 
   const oldFilePath = `${folder}/${oldFileName}`;
-  const newFilePath = `${folder}/${newFileName}`;
+  const newFilePath = `${folder}/${newFileName}.txt`; // Add .txt extension to the new file name
 
   fs.rename(oldFilePath, newFilePath, (err) => {
     if (err) {
@@ -2122,6 +2378,7 @@ app.post('/rename', requireLogin, (req, res) => {
     }
   });
 });
+
 
 // Handle the file delete request
 app.post('/delete', requireLogin, (req, res) => {
@@ -2141,22 +2398,24 @@ app.post('/delete', requireLogin, (req, res) => {
 
 // Serve the file editor page with the selected file
 app.get('/edit/:folder/:filename', requireLogin, (req, res) => {
-    const folder = req.params.folder;
-    const filename = req.params.filename;
-    const filePath = `${folder}/${filename}`;
-  
-    // Read the content of the selected file
-    fs.readFile(filePath, 'utf-8', (err, content) => {
-      if (err) {
-        res.send(`Error reading file: ${err}`);
-      } else {
-        res.send(`
+  const folder = req.params.folder;
+  const filename = req.params.filename;
+  const filePath = `${folder}/${filename}`;
+
+  // Read the content of the selected file
+  fs.readFile(filePath, 'utf-8', (err, content) => {
+    if (err) {
+      res.send(`Error reading file: ${err}`);
+    } else {
+      res.send(`
         <!DOCTYPE html>
 <html>
 <head>
 <title>Giftmaster Editor</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="icon" href="https://cdn.discordapp.com/attachments/1152538414017687684/1154710899525947422/gift.jpg" type="image/jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -2264,32 +2523,105 @@ app.get('/edit/:folder/:filename', requireLogin, (req, res) => {
             </form>
         </div>
     </div>
+    <style>
+/* Add the heart icon and tooltip styles */
+.floating-heart {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff5555;
+  color: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.floating-heart i {
+  font-size: 24px;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  bottom: 50px;
+  right: 50px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.inline-text {
+  display: inline-block; /* Make the text inline */
+  margin-left: 5px; /* Add some spacing between "Made by" and "Science Gear" */
+}
+
+.floating-heart:hover {
+  background-color: #ff3333;
+}
+
+.floating-heart:hover .tooltip {
+  opacity: 1;
+}
+</style>
+
+<div class="floating-heart">
+		<i class="fas fa-heart"></i>
+		<div class="tooltip">Made with ❤️ By Science Gear</div>
+	  </div>
+
+<script>
+// JavaScript for toggling the tooltip
+const floatingHeart = document.querySelector('.floating-heart');
+
+floatingHeart.addEventListener('click', () => {
+  const tooltip = floatingHeart.querySelector('.tooltip');
+  tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
+});
+
+// Hide the tooltip initially
+document.addEventListener('DOMContentLoaded', () => {
+  const tooltip = floatingHeart.querySelector('.tooltip');
+  tooltip.style.display = 'none';
+});
+
+</script>
+
+
 </body>
 </html>
 
         `);
-      }
-    });
+    }
   });
-  
-  
-  
-  // Handle the file saving
-  app.post('/save/:folder/:filename', requireLogin, (req, res) => {
-      const folder = req.params.folder;
-      const filename = req.params.filename;
-      const content = req.body.content;
-      const filePath = `${folder}/${filename}`;
-    
-      // Save the file
-      fs.writeFile(filePath, content, (err) => {
-        if (err) {
-          res.send(`Error saving file: ${err}`);
-        } else {
-          res.send(`
+});
+
+
+
+// Handle the file saving
+app.post('/save/:folder/:filename', requireLogin, (req, res) => {
+  const folder = req.params.folder;
+  const filename = req.params.filename;
+  const content = req.body.content;
+  const filePath = `${folder}/${filename}`;
+
+  // Save the file
+  fs.writeFile(filePath, content, (err) => {
+    if (err) {
+      res.send(`Error saving file: ${err}`);
+    } else {
+      res.send(`
           <html>
           <head>
           <title>Saved</title>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
           <link rel="icon" href="https://cdn.discordapp.com/attachments/1152538414017687684/1154710899525947422/gift.jpg" type="image/jpg">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
             <style>
@@ -2375,16 +2707,88 @@ app.get('/edit/:folder/:filename', requireLogin, (req, res) => {
               <h1 class="popup-message">File "${folder}/${filename}" saved successfully</h1>
               <a href="/edit" class="popup-button">Back to Editor</a>
             </div>
+            <style>
+/* Add the heart icon and tooltip styles */
+.floating-heart {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff5555;
+  color: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.floating-heart i {
+  font-size: 24px;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  bottom: 50px;
+  right: 50px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.inline-text {
+  display: inline-block; /* Make the text inline */
+  margin-left: 5px; /* Add some spacing between "Made by" and "Science Gear" */
+}
+
+.floating-heart:hover {
+  background-color: #ff3333;
+}
+
+.floating-heart:hover .tooltip {
+  opacity: 1;
+}
+</style>
+
+<div class="floating-heart">
+		<i class="fas fa-heart"></i>
+		<div class="tooltip">Made with ❤️ By Science Gear</div>
+	  </div>
+
+<script>
+// JavaScript for toggling the tooltip
+const floatingHeart = document.querySelector('.floating-heart');
+
+floatingHeart.addEventListener('click', () => {
+  const tooltip = floatingHeart.querySelector('.tooltip');
+  tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
+});
+
+// Hide the tooltip initially
+document.addEventListener('DOMContentLoaded', () => {
+  const tooltip = floatingHeart.querySelector('.tooltip');
+  tooltip.style.display = 'none';
+});
+
+</script>
+
+
           </body>
         </html>      
           `);
-        }
-      });
-    });  
-  
-    
-  
-  // Start the server
-  app.listen(3000, () => {
-    console.log('Server started on port 3000');
+    }
   });
+});
+
+
+
+// Start the server
+app.listen(config.port, () => {
+  console.log(`Server started on port ${config.port}`);
+});
