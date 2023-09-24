@@ -61,16 +61,16 @@ For comprehensive instructions on configuring and utilizing GiftMaster, please r
 ## Preview
 
 - **Help Menu:**
-  [![Help Menu](https://cdn.discordapp.com/attachments/1134114615962390581/1155450003062526003/image.png)](example.com)
+  [![Help Menu](https://cdn.discordapp.com/attachments/1134114615962390581/1155450003062526003/image.png)]
 
 - **Dashboard:**
-  [![Dashboard](https://cdn.discordapp.com/attachments/1118478613986156544/1153663257370955826/image.png)](example.com)
+  [![Dashboard](https://cdn.discordapp.com/attachments/1118478613986156544/1153663257370955826/image.png)]
 
 Experience the power of GiftMaster and enhance your Discord server today!
 
 ## Getting Help
 
-If you have any questions or need assistance, feel free to reach out to us on Discord or through our [support email](mailto:support@example.com).
+If you have any questions or need assistance, feel free to reach out to us on Discord or make an issue.
 
 ## About Us
 
