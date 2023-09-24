@@ -6,12 +6,21 @@
 
 Welcome to GiftMaster, the advanced Discord bot that rewards you for using commands in your server and sends rewards via a sleek and efficient dashboard.
 
+## Table of Contents
+
+- [Key Features](#key-features)
+- [Dependencies](#dependencies)
+- [Installation and Configuration](#installation-and-configuration)
+- [Preview](#preview)
+- [Getting Help](#getting-help)
+- [About Us](#about-us)
+
 ## Key Features
 
-- Stunning User Interface: GiftMaster boasts an impressive and visually appealing UI.
-- User-Friendly Dashboard: Our dashboard makes configuration a breeze.
-- Easy Setup: GiftMaster is designed for simplicity, making it accessible for everyone.
-- Slash Command Support: We fully support Discord's slash commands for seamless interactions.
+- **Stunning User Interface:** GiftMaster boasts an impressive and visually appealing UI.
+- **User-Friendly Dashboard:** Our dashboard makes configuration a breeze.
+- **Easy Setup:** GiftMaster is designed for simplicity, making it accessible for everyone.
+- **Slash Command Support:** We fully support Discord's slash commands for seamless interactions.
 
 ## Dependencies
 
@@ -23,36 +32,46 @@ Welcome to GiftMaster, the advanced Discord bot that rewards you for using comma
 
 Adding GiftMaster to your Discord server is a straightforward process:
 
-1. Create a bot on the [Discord Developer Portal](https://discord.com/developers/applications) and invite the bot to your server.
+1. **Create a Bot:** Visit the [Discord Developer Portal](https://discord.com/developers/applications), create a bot, and invite it to your server.
 
-2. Download the bot files to your local machine.
+2. **Download the Bot:** Download the bot files to your local machine.
 
-3. Place the bot files in a folder of your choice.
+3. **Folder Placement:** Place the bot files in a folder of your choice.
 
-4. Install the necessary dependencies using npm:
+4. **Install Dependencies:** Install the necessary dependencies using npm:
+
    ```bash
    npm install
    ```
 
-5. Configure the bot by creating a `config.json` file in the root directory.
+5. **Configure the Bot:** Create a `config.json` file in the root directory and add your bot token to the `.env` file. You can obtain this token from the [Discord Developer Portal](https://discord.com/developers/applications).
 
-6. Add your bot token to the `.env` file. You can obtain this token from the [Discord Developer Portal](https://discord.com/developers/applications).
+6. **Dashboard Setup:** Update the website interface's username and password in the config or `.env` file.
 
-7. Update the website interface's username and password in the config or `.env` file.
+7. **Start the Bot:** Start the bot using the following command:
 
-8. Start the bot using the following command:
    ```bash
    node index.js
    ```
 
-9. Access the bot's dashboard by navigating to your server's URL or `127.0.0.1:3000`.
+8. **Access the Dashboard:** Access the bot's dashboard by navigating to your server's URL or `127.0.0.1:3000`.
 
 For comprehensive instructions on configuring and utilizing GiftMaster, please refer to our informative [YouTube video tutorial](example.com).
 
 ## Preview
 
-1. [Screenshot 1](example.com)
-2. [Screenshot 2](example.com)
-3. [Screenshot 3](example.com)
+- **Help Menu:**
+  [![Help Menu](https://cdn.discordapp.com/attachments/1134114615962390581/1155450003062526003/image.png)](example.com)
+
+- **Dashboard:**
+  [![Dashboard](https://cdn.discordapp.com/attachments/1118478613986156544/1153663257370955826/image.png)](example.com)
 
 Experience the power of GiftMaster and enhance your Discord server today!
+
+## Getting Help
+
+If you have any questions or need assistance, feel free to reach out to us on Discord or through our [support email](mailto:support@example.com).
+
+## About Us
+
+GiftMaster is developed with love by Science Gear 🔥. We're passionate about making your Discord experience more enjoyable and rewarding. Thank you for choosing GiftMaster!
